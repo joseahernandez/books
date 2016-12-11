@@ -1,0 +1,27 @@
+{
+    "name": "joseahernandez/books",
+    "type": "project",
+    "require": {
+        "php": "~7.1",
+        "ramsey/uuid": "^3.5.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7.2",
+        "mockery/mockery": "0.9.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Hernández",
+            "email": "josehernandz@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "books\\": "src/books/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
