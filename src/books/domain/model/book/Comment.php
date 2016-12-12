@@ -18,6 +18,11 @@ final class Comment {
     private $readerId;
 
     /**
+     * @var BookId
+     */
+    private $bookId;
+
+    /**
      * @var string
      */
     private $comment;
@@ -32,9 +37,10 @@ final class Comment {
      * @param ReaderId  $readerId
      * @param string    $comment
      */
-    public function __construct(CommentId $commentId, ReaderId $readerId, string $comment) {
+    public function __construct(CommentId $commentId, BookId $bookId, ReaderId $readerId, string $comment) {
         $this->commentId = $commentId;
-        $this->readerId = $readerId;
+        $this->bookId    = $bookId;
+        $this->readerId  = $readerId;
         $this->setComment($comment);
         $this->createdAt = new \DateTime();
     }
@@ -66,4 +72,9 @@ final class Comment {
      * @return \DateTime
      */
     public function createdAt(): \DateTime { return $this->createdAt; }
+
+    /**
+     * @return BookId
+     */
+    public function book(): BookId { return $this->bookId; }
 }

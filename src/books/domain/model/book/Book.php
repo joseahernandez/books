@@ -64,7 +64,7 @@ final class Book {
      * @return Comment
      */
     public function comment(ReaderId $readerId, string $comment): Comment {
-        return new Comment(new CommentId(), $readerId, $comment);
+        return new Comment(new CommentId(), $this->id(), $readerId, $comment);
     }
 
     /**
