@@ -3,6 +3,7 @@
 namespace books\domain\model\book;
 
 use books\domain\model\author\Author;
+use books\domain\model\author\AuthorId;
 use books\domain\model\reader\ReaderId;
 use books\validators\Assert;
 
@@ -19,19 +20,19 @@ final class Book {
     private $title;
 
     /**
-     * @var Author
+     * @var AuthorId
      */
-    private $author;
+    private $authorId;
 
     /**
-     * @param BookId $bookId
-     * @param string $title
-     * @param Author $author
+     * @param BookId   $bookId
+     * @param string   $title
+     * @param AuthorId $authorId
      */
-    public function __construct(BookId $bookId, string $title, Author $author) {
+    public function __construct(BookId $bookId, string $title, AuthorId $authorId) {
         $this->bookId = $bookId;
         $this->setTitle($title);
-        $this->author = $author;
+        $this->authorId = $authorId;
     }
 
     /**
@@ -53,9 +54,9 @@ final class Book {
     public function title(): string { return $this->title; }
 
     /**
-     * @return Author
+     * @return AuthorId
      */
-    public function author(): Author { return $this->author; }
+    public function author(): AuthorId { return $this->authorId; }
 
     /**
      * @param ReaderId $readerId
