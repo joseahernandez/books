@@ -23,17 +23,17 @@ class BookTest extends \PHPUnit_Framework_TestCase {
     private $book;
 
     /**
-     * @var Author
+     * @var AuthorId
      */
-    private $author;
+    private $authorId;
 
     /**
      * @setUp
      */
     public function setUp() {
-        $this->reader = new Reader(new ReaderId(), "Reader 1");
-        $this->author = new Author(new AuthorId(), "William", "Shakespeare");
-        $this->book   = new Book(new BookId(), "Macbeth", $this->author);
+        $this->reader   = new Reader(new ReaderId(), "Reader 1");
+        $this->authorId = new AuthorId();
+        $this->book     = new Book(new BookId(), "Macbeth", $this->authorId);
     }
 
     /**
@@ -42,11 +42,11 @@ class BookTest extends \PHPUnit_Framework_TestCase {
     public function createBook() {
         $bookId = new BookId();
         $title  = "Hamlet";
-        $book   = new Book($bookId, $title, $this->author);
+        $book   = new Book($bookId, $title, $this->authorId);
 
         $this->assertSame($bookId, $book->id());
         $this->assertSame($title, $book->title());
-        $this->assertSame($this->author, $book->author());
+        $this->assertSame($this->authorId, $book->author());
     }
 
     /**
@@ -56,7 +56,7 @@ class BookTest extends \PHPUnit_Framework_TestCase {
     public function bookTitleCanNotBeEmpty() {
         $bookId = new BookId();
         $title  = "";
-        new Book($bookId, $title, $this->author);
+        new Book($bookId, $title, $this->authorId);
     }
 
     /**

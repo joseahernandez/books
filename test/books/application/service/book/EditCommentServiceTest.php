@@ -75,7 +75,7 @@ class EditCommentServiceTest extends \PHPUnit_Framework_TestCase {
         $this->readerId  = new ReaderId();
         $reader          = new Reader($this->readerId, "Lewis");
         $this->bookId    = new BookId();
-        $book            = new Book($this->bookId, "Hamlet", new Author(new AuthorId(), "William", "Shakespeare"));
+        $book            = new Book($this->bookId, "Hamlet", new AuthorId());
         $this->commentId = new CommentId();
         $comment         = new Comment($this->commentId, $this->bookId, $this->readerId, "I like the book");
 
@@ -164,7 +164,7 @@ class EditCommentServiceTest extends \PHPUnit_Framework_TestCase {
     public function editCommentThatDoNotBelongsToBook() {
         $commentEdited = "I really love the book";
         $otherBookId = new BookId();
-        $otherBook   = new Book($otherBookId, "Macbeth", new Author(new AuthorId(), "William", "Shakespeare"));
+        $otherBook   = new Book($otherBookId, "Macbeth", new AuthorId());
         $this->bookRepository->save($otherBook);
         $request = new EditCommentRequest($this->readerId, $otherBookId, $this->commentId, $commentEdited);
 

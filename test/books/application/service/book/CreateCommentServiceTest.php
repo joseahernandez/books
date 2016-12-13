@@ -53,10 +53,10 @@ class CreateCommentServiceTest extends \PHPUnit_Framework_TestCase {
     }
 
     private function addFixturesToRepositories() {
-        $this->readerId  = new ReaderId();
-        $reader          = new Reader($this->readerId, "Lewis");
-        $this->bookId    = new BookId();
-        $book            = new Book($this->bookId, "Hamlet", new Author(new AuthorId(), "William", "Shakespeare"));
+        $this->readerId = new ReaderId();
+        $reader         = new Reader($this->readerId, "Lewis");
+        $this->bookId   = new BookId();
+        $book           = new Book($this->bookId, "Hamlet", new AuthorId());
 
         $this->readerRepository->save($reader);
         $this->bookRepository->save($book);
