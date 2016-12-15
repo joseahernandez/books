@@ -46,4 +46,11 @@ class MemoryBookRepository implements BookRepository {
     public function save(Book $book) {
         $this->map[$book->id()->__toString()] = $book;
     }
+
+    /**
+     * @param BookId $bookId
+     */
+    public function delete(BookId $bookId) {
+        unset($this->map[$bookId->__toString()]);
+    }
 }

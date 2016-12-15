@@ -19,4 +19,9 @@ interface BookRepository {
      * @param Book $book
      */
     public function save(Book $book);
+
+    /**
+     * @param BookId $bookId
+     */
+    public function delete(BookId $bookId);
 }
