@@ -2,6 +2,7 @@
 
 namespace books\infrastructure\domain\model\book;
 
+use books\domain\model\author\AuthorId;
 use books\domain\model\book\Book;
 use books\domain\model\book\BookId;
 use books\domain\model\book\BookRepository;
@@ -32,6 +33,21 @@ class MemoryBookRepository implements BookRepository {
 
         return $this->map[$bookId->__toString()];
     }
+
+    /**
+     * @param AuthorId $authorId
+     *
+     * @return array
+     */
+    public function findByAuthor(AuthorId $authorId): array {
+        return array_filter(
+            $this->map,
+            function (Book $book) use ($authorId) {
+                return $book->author() === $authorId;
+            }
+        );
+    }
+
 
     /**
      * @return array

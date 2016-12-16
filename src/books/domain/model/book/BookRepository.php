@@ -2,6 +2,8 @@
 
 namespace books\domain\model\book;
 
+use books\domain\model\author\AuthorId;
+
 interface BookRepository {
     /**
      * @param BookId $bookId
@@ -9,6 +11,13 @@ interface BookRepository {
      * @return Book
      */
     public function findById(BookId $bookId): Book;
+
+    /**
+     * @param AuthorId $authorId
+     *
+     * @return array
+     */
+    public function findByAuthor(AuthorId $authorId): array;
 
     /**
      * @return array
