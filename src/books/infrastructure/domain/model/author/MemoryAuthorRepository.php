@@ -47,4 +47,10 @@ class MemoryAuthorRepository implements AuthorRepository {
         $this->map[$author->id()->__toString()] = $author;
     }
 
+    /**
+     * @param AuthorId $authorId
+     */
+    public function delete(AuthorId $authorId) {
+        unset($this->map[$authorId->__toString()]);
+    }
 }

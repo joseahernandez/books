@@ -20,4 +20,9 @@ interface AuthorRepository {
      * @param Author $author
      */
     public function save(Author $author);
+
+    /**
+     * @param AuthorId $authorId
+     */
+    public function delete(AuthorId $authorId);
 }
