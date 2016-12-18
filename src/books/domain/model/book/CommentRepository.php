@@ -19,4 +19,9 @@ interface CommentRepository {
      * @param Comment $comment
      */
     public function save(Comment $comment);
+
+    /**
+     * @param CommentId $commentId
+     */
+    public function delete(CommentId $commentId);
 }

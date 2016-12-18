@@ -44,4 +44,11 @@ class MemoryCommentRepository implements CommentRepository {
     public function save(Comment $comment) {
         $this->map[$comment->id()->__toString()] = $comment;
     }
+
+    /**
+     * @param CommentId $commentId
+     */
+    public function delete(CommentId $commentId) {
+        unset($this->map[$commentId->__toString()]);
+    }
 }
