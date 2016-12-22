@@ -11,6 +11,11 @@ final class Rate {
     public const RATE_MAX_VALUE = 5;
 
     /**
+     * @var BookId
+     */
+    private $bookId;
+
+    /**
      * @var ReaderId
      */
     private $readerId;
@@ -21,10 +26,12 @@ final class Rate {
     private $rate;
 
     /**
+     * @param BookId   $bookId
      * @param ReaderId $readerId
      * @param int      $rate
      */
-    public function __construct(ReaderId $readerId, int $rate) {
+    public function __construct(BookId $bookId, ReaderId $readerId, int $rate) {
+        $this->bookId   = $bookId;
         $this->readerId = $readerId;
         Assert::betweenInclusive(
             $rate,
@@ -34,6 +41,11 @@ final class Rate {
         );
         $this->rate = $rate;
     }
+
+    /**
+     * @return BookId
+     */
+    public function book(): BookId { return $this->bookId; }
 
     /**
      * @return int

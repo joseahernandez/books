@@ -75,6 +75,6 @@ final class Book {
      * @return Rate
      */
     public function rate(ReaderId $readerId, int $rate) {
-        return new Rate($readerId, $rate);
+        return new Rate($this->id(), $readerId, $rate);
     }
 }
