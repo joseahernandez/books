@@ -2,6 +2,7 @@
 
 namespace books\domain\model;
 
+use books\domain\model\book\BookId;
 use books\domain\model\book\Rate;
 use books\domain\model\reader\ReaderId;
 
@@ -11,9 +12,10 @@ class RateTest extends \PHPUnit_Framework_TestCase {
      * @test
      */
     public function createARate() {
+        $bookId   = new BookId();
         $readerId = new ReaderId();
         $value    = 3;
-        $rate     = new Rate($readerId, $value);
+        $rate     = new Rate($bookId, $readerId, $value);
 
         $this->assertSame($readerId, $rate->reader());
         $this->assertSame($value, $rate->rate());
@@ -27,7 +29,7 @@ class RateTest extends \PHPUnit_Framework_TestCase {
         $minValue     = Rate::RATE_MIN_VALUE;
         $invalidValue = $minValue - 1;
 
-        new Rate(new ReaderId(), $invalidValue);
+        new Rate(new BookId(), new ReaderId(), $invalidValue);
     }
 
     /**
@@ -38,6 +40,6 @@ class RateTest extends \PHPUnit_Framework_TestCase {
         $maxValue     = Rate::RATE_MAX_VALUE;
         $invalidValue = $maxValue + 1;
 
-        new Rate(new ReaderId(), $invalidValue);
+        new Rate(new BookId(), new ReaderId(), $invalidValue);
     }
 }
